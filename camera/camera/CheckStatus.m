@@ -7,6 +7,7 @@
 //
 
 #import "CheckStatus.h"
+#import <UIKit/UIKit.h>
 
 @implementation CheckStatus
 
@@ -32,6 +33,13 @@
             break;
         default:
             break;
+    }
+    //下次进入进行检查，没有授权就引导用户进入设置修改
+    if (videoStatus == AVAuthorizationStatusDenied || videoStatus == AVAuthorizationStatusRestricted) {
+        NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url];
+        }
     }
     
     //弹框相机授权
