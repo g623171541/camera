@@ -114,5 +114,19 @@
 }
 
 
+#pragma mark - 检查相机权限
++ (BOOL)canUserCamear{
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (authStatus == AVAuthorizationStatusDenied) {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"请打开相机权限" message:@"设置-隐私-相机" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+        alertView.tag = 100;
+        [alertView show];
+        return NO;
+    }
+    else{
+        return YES;
+    }
+    return YES;
+}
 
 @end

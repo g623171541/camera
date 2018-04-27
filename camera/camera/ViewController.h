@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+#define kScreenBounds   [UIScreen mainScreen].bounds
+#define kScreenWidth  kScreenBounds.size.width*1.0
+#define kScreenHeight kScreenBounds.size.height*1.0
 
 @end
 

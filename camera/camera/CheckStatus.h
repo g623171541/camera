@@ -25,4 +25,7 @@
 //检查相册权限
 +(void)checkPhotoStatus;
 
+//检查相机权限
++ (BOOL)canUserCamear;
+
 @end
