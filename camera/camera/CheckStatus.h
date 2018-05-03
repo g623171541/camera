@@ -24,8 +24,24 @@
 +(void)checkAudioStatus;
 //检查相册权限
 +(void)checkPhotoStatus;
-
 //检查相机权限
 + (BOOL)canUserCamear;
+
+
+// ------------  UIImagePickerController   ---------------
+
+// 检测相机是否可用
++ (BOOL)isCameraAvailable;
+// 检测前置闪光灯是否可用
++ (BOOL)isCameraFrontFlashAvailable;
+// 检测后置闪光灯是否可用
++ (BOOL)isCameraRearFlashAvailable;
+// 检测前置摄像头是否可用
++ (BOOL)isFrontCameraAvailable;
+// 检测后置摄像头是否可用
++ (BOOL)isRearCameraAvailable;
+// 检测摄像头支持拍照或摄像
++ (BOOL)cameraSupportMedia:(NSString *)mediaType;
+
 
 @end

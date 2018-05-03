@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "CheckStatus.h"
 #import <AVFoundation/AVFoundation.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 @interface ViewController ()
 //捕获设备，通常是前置摄像头，后置摄像头，麦克风（音频输入）
 @property (nonatomic, strong) AVCaptureDevice *device;
@@ -36,6 +37,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // 用 UIImagePickerController
+    [self useUIImagePickerController];
+    
+    
+    
     
     if ([CheckStatus canUserCamear]) {
         [self customCamera];
@@ -279,7 +286,21 @@
     }
 }
 
-
+// ------------  UIImagePickerController   ---------------
+-(void)useUIImagePickerController{
+    //如果使用 kUTTypeImage 必须导入 #import <MobileCoreServices/MobileCoreServices.h> 这个库
+    if ([CheckStatus cameraSupportMedia:(__bridge NSString *) kUTTypeImage]) {
+        NSLog(@"支持 拍照");
+    }else{
+        NSLog(@"不支持 拍照");
+    };
+    if ([CheckStatus cameraSupportMedia:(__bridge NSString *) kUTTypeMovie]) {
+        NSLog(@"支持 录像");
+    }else{
+        NSLog(@"不支持 录像");
+    };
+    
+}
 
 
 @end
