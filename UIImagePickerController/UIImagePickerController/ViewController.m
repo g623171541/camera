@@ -11,6 +11,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 @end
 
@@ -44,9 +45,10 @@
      } __TVOS_PROHIBITED;
      */
     controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
     /*** 检查支持的媒体类型
      ** UIImagePickerControllerMediaType 包含着KUTTypeImage 和KUTTypeMovie
-     ** @param kUTTypeImage 静态图片
+     ** kUTTypeImage 静态图片
      * KUTTypeImage 包含：
          const CFStringRef  kUTTypeImage ;抽象的图片类型
          const CFStringRef  kUTTypeJPEG ;
@@ -82,10 +84,10 @@
     controller.delegate = self;
     
     // 配置闪光灯模式:打开
-    controller.cameraFlashMode = UIImagePickerControllerCameraFlashModeOn;
+    controller.cameraFlashMode = UIImagePickerControllerCameraFlashModeAuto;
     
     // 配置摄像头
-    controller.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+//    controller.cameraDevice = UIImagePickerControllerCameraDeviceRear;
     
     //模态展示controller
     [self.navigationController presentViewController:controller animated:true completion:nil];
@@ -93,7 +95,21 @@
 
 // UIImagePickerControllerDelegate 代理方法
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    // 拍摄完成之后的代理方法
+    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+    // 判断媒体类型是图片还是视频
+    if ([mediaType isEqualToString:(__bridge NSString*)kUTTypeImage]) {
+        // 拿出info中的图片数据
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        self.imageView.image = image;
+        self.imageView.contentMode = UIViewContentModeScaleToFill;
+        
+        // 保存图片
+        
+    }
     
+    // 隐藏拍照模式，展示图片
+    [picker dismissViewControllerAnimated:true completion:nil];
 }
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     // 点击cancel把展示出来的相机页面关闭掉
