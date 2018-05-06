@@ -14,6 +14,8 @@
 		E8C68133209BEBF50007DBC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8C68131209BEBF50007DBC6 /* LaunchScreen.storyboard */; };
 		E8C68136209BEBF50007DBC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E8C68135209BEBF50007DBC6 /* main.m */; };
 		E8C68144209BEC8A0007DBC6 /* CheckStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = E8C68143209BEC8A0007DBC6 /* CheckStatus.m */; };
+		E8FAE0CF209E84E6008ED8A1 /* ScanPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FAE0CE209E84E6008ED8A1 /* ScanPhotoViewController.m */; };
+		E8FAE0D2209E93B3008ED8A1 /* TakeMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FAE0D1209E93B3008ED8A1 /* TakeMovieViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,10 @@
 		E8C68135209BEBF50007DBC6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E8C68142209BEC8A0007DBC6 /* CheckStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckStatus.h; sourceTree = "<group>"; };
 		E8C68143209BEC8A0007DBC6 /* CheckStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckStatus.m; sourceTree = "<group>"; };
+		E8FAE0CD209E84E6008ED8A1 /* ScanPhotoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanPhotoViewController.h; sourceTree = "<group>"; };
+		E8FAE0CE209E84E6008ED8A1 /* ScanPhotoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanPhotoViewController.m; sourceTree = "<group>"; };
+		E8FAE0D0209E93B3008ED8A1 /* TakeMovieViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TakeMovieViewController.h; sourceTree = "<group>"; };
+		E8FAE0D1209E93B3008ED8A1 /* TakeMovieViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TakeMovieViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +73,10 @@
 				E8C6812A209BEBF40007DBC6 /* ViewController.m */,
 				E8C68142209BEC8A0007DBC6 /* CheckStatus.h */,
 				E8C68143209BEC8A0007DBC6 /* CheckStatus.m */,
+				E8FAE0CD209E84E6008ED8A1 /* ScanPhotoViewController.h */,
+				E8FAE0CE209E84E6008ED8A1 /* ScanPhotoViewController.m */,
+				E8FAE0D0209E93B3008ED8A1 /* TakeMovieViewController.h */,
+				E8FAE0D1209E93B3008ED8A1 /* TakeMovieViewController.m */,
 				E8C6812C209BEBF40007DBC6 /* Main.storyboard */,
 				E8C6812F209BEBF50007DBC6 /* Assets.xcassets */,
 				E8C68131209BEBF50007DBC6 /* LaunchScreen.storyboard */,
@@ -148,6 +158,8 @@
 			files = (
 				E8C6812B209BEBF40007DBC6 /* ViewController.m in Sources */,
 				E8C68136209BEBF50007DBC6 /* main.m in Sources */,
+				E8FAE0D2209E93B3008ED8A1 /* TakeMovieViewController.m in Sources */,
+				E8FAE0CF209E84E6008ED8A1 /* ScanPhotoViewController.m in Sources */,
 				E8C68144209BEC8A0007DBC6 /* CheckStatus.m in Sources */,
 				E8C68128209BEBF40007DBC6 /* AppDelegate.m in Sources */,
 			);

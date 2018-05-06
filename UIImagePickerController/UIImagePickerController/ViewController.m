@@ -44,6 +44,7 @@
          UIImagePickerControllerSourceTypeSavedPhotosAlbum      来自相册
      } __TVOS_PROHIBITED;
      */
+    // 如果想从图库中选择照片，则需吧sourceType改为 PhotoLibrary即可，同时去掉下面的闪关灯配置和编辑配置。
     controller.sourceType = UIImagePickerControllerSourceTypeCamera;
     
     /*** 检查支持的媒体类型
