@@ -37,17 +37,18 @@ typedef NS_ENUM( NSInteger, AVCamManualCaptureMode ) {
 
 @interface AVCamManualCameraViewController () <AVCaptureFileOutputRecordingDelegate>
 
-@property (nonatomic, weak) IBOutlet AVCamManualPreviewView *previewView;
-@property (nonatomic, weak) IBOutlet UISegmentedControl *captureModeControl;
+@property (nonatomic, weak) IBOutlet AVCamManualPreviewView *previewView;//预览视图
+@property (nonatomic, weak) IBOutlet UISegmentedControl *captureModeControl;//控制拍照或拍视频
 @property (nonatomic, weak) IBOutlet UILabel *cameraUnavailableLabel;
 @property (nonatomic, weak) IBOutlet UIButton *resumeButton;
-@property (nonatomic, weak) IBOutlet UIButton *recordButton;
-@property (nonatomic, weak) IBOutlet UIButton *cameraButton;
-@property (nonatomic, weak) IBOutlet UIButton *photoButton;
-@property (nonatomic, weak) IBOutlet UIButton *HUDButton;
+@property (nonatomic, weak) IBOutlet UIButton *recordButton;//录视频按钮
+@property (nonatomic, weak) IBOutlet UIButton *cameraButton;//切换摄像头按钮
+@property (nonatomic, weak) IBOutlet UIButton *photoButton;//拍照按钮
+@property (nonatomic, weak) IBOutlet UIButton *HUDButton;//显示手动调控参数view
 
-@property (nonatomic, weak) IBOutlet UIView *manualHUD;
+@property (nonatomic, weak) IBOutlet UIView *manualHUD;//参数调控view
 
+// 调整焦距
 @property (nonatomic) NSArray *focusModes;
 @property (nonatomic, weak) IBOutlet UIView *manualHUDFocusView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *focusModeControl;
@@ -55,10 +56,11 @@ typedef NS_ENUM( NSInteger, AVCamManualCaptureMode ) {
 @property (nonatomic, weak) IBOutlet UILabel *lensPositionNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *lensPositionValueLabel;
 
+//曝光模式
 @property (nonatomic) NSArray *exposureModes;
 @property (nonatomic, weak) IBOutlet UIView *manualHUDExposureView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *exposureModeControl;
-@property (nonatomic, weak) IBOutlet UISlider *exposureDurationSlider;
+@property (nonatomic, weak) IBOutlet UISlider *exposureDurationSlider;// 曝光时间
 @property (nonatomic, weak) IBOutlet UILabel *exposureDurationNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *exposureDurationValueLabel;
 @property (nonatomic, weak) IBOutlet UISlider *ISOSlider;
@@ -71,6 +73,7 @@ typedef NS_ENUM( NSInteger, AVCamManualCaptureMode ) {
 @property (nonatomic, weak) IBOutlet UILabel *exposureTargetOffsetNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *exposureTargetOffsetValueLabel;
 
+// 白平衡调整 WB
 @property (nonatomic) NSArray *whiteBalanceModes;
 @property (nonatomic, weak) IBOutlet UIView *manualHUDWhiteBalanceView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *whiteBalanceModeControl;
@@ -81,9 +84,11 @@ typedef NS_ENUM( NSInteger, AVCamManualCaptureMode ) {
 @property (nonatomic, weak) IBOutlet UILabel *tintNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *tintValueLabel;
 
+// OIS
 @property (nonatomic, weak) IBOutlet UIView *manualHUDLensStabilizationView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *lensStabilizationControl;
 
+// Photo
 @property (nonatomic, weak) IBOutlet UIView *manualHUDPhotoView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *rawControl;
 
@@ -101,13 +106,13 @@ typedef NS_ENUM( NSInteger, AVCamManualCaptureMode ) {
 // Utilities
 @property (nonatomic) AVCamManualSetupResult setupResult;
 @property (nonatomic, getter=isSessionRunning) BOOL sessionRunning;
-@property (nonatomic) UIBackgroundTaskIdentifier backgroundRecordingID;
+@property (nonatomic) UIBackgroundTaskIdentifier backgroundRecordingID; // 后台时长
 
 @end
 
 @implementation AVCamManualCameraViewController
 
-static const float kExposureDurationPower = 5; // Higher numbers will give the slider more sensitivity at shorter durations
+static const float kExposureDurationPower = 1; // Higher numbers will give the slider more sensitivity at shorter durations
 static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure duration to a useful range
 
 
