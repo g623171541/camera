@@ -84,7 +84,7 @@ typedef NS_ENUM( NSInteger, AVCamManualCaptureMode ) {
 @property (nonatomic, weak) IBOutlet UILabel *tintNameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *tintValueLabel;
 
-// OIS
+// OIS 光学防抖
 @property (nonatomic, weak) IBOutlet UIView *manualHUDLensStabilizationView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *lensStabilizationControl;
 
@@ -140,7 +140,14 @@ static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure durati
 	self.session = [[AVCaptureSession alloc] init];
 
 	// Create a device discovery session
-	NSArray<NSString *> *deviceTypes = @[AVCaptureDeviceTypeBuiltInWideAngleCamera, AVCaptureDeviceTypeBuiltInDuoCamera, AVCaptureDeviceTypeBuiltInTelephotoCamera];
+    /*
+         AVCaptureDeviceTypeBuiltInMicrophone
+         AVCaptureDeviceTypeBuiltInWideAngleCamera      广角镜头：视角范围大，可以涵盖大范围景物
+         AVCaptureDeviceTypeBuiltInTelephotoCamera      长焦镜头：手机里面小一点的是长焦镜头
+         AVCaptureDeviceTypeBuiltInDualCamera           双摄相机
+         AVCaptureDeviceTypeBuiltInTrueDepthCamera
+     */
+	NSArray<NSString *> *deviceTypes = @[AVCaptureDeviceTypeBuiltInWideAngleCamera, AVCaptureDeviceTypeBuiltInDualCamera, AVCaptureDeviceTypeBuiltInTelephotoCamera];
 	self.videoDeviceDiscoverySession = [AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:deviceTypes mediaType:AVMediaTypeVideo position:AVCaptureDevicePositionUnspecified];
 
 	// Set up the preview view
@@ -704,6 +711,7 @@ static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure durati
 	} );
 }
 
+// 设置对焦
 - (IBAction)changeFocusMode:(id)sender
 {
 	UISegmentedControl *control = sender;
@@ -726,6 +734,7 @@ static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure durati
 	}
 }
 
+// 设置
 - (IBAction)changeLensPosition:(id)sender
 {
 	UISlider *control = sender;
@@ -768,12 +777,14 @@ static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure durati
 	} );
 }
 
+// 手势
 - (IBAction)focusAndExposeTap:(UIGestureRecognizer *)gestureRecognizer
 {
 	CGPoint devicePoint = [(AVCaptureVideoPreviewLayer *)self.previewView.layer captureDevicePointOfInterestForPoint:[gestureRecognizer locationInView:[gestureRecognizer view]]];
 	[self focusWithMode:self.videoDevice.focusMode exposeWithMode:self.videoDevice.exposureMode atDevicePoint:devicePoint monitorSubjectAreaChange:YES];
 }
 
+// 设置曝光模式
 - (IBAction)changeExposureMode:(id)sender
 {
 	UISegmentedControl *control = sender;
@@ -795,6 +806,7 @@ static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure durati
 	}
 }
 
+// 设置曝光时间
 - (IBAction)changeExposureDuration:(id)sender
 {
 	UISlider *control = sender;
@@ -814,6 +826,7 @@ static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure durati
 	}
 }
 
+// 设置感光度
 - (IBAction)changeISO:(id)sender
 {
 	UISlider *control = sender;
@@ -828,6 +841,7 @@ static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure durati
 	}
 }
 
+// 设置
 - (IBAction)changeExposureTargetBias:(id)sender
 {
 	UISlider *control = sender;
@@ -842,6 +856,7 @@ static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure durati
 	}
 }
 
+// 设置白平衡模式：自动和手动
 - (IBAction)changeWhiteBalanceMode:(id)sender
 {
 	UISegmentedControl *control = sender;
@@ -877,6 +892,7 @@ static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure durati
 	}
 }
 
+// 设置色温
 - (IBAction)changeTemperature:(id)sender
 {
 	AVCaptureWhiteBalanceTemperatureAndTintValues temperatureAndTint = {
@@ -887,6 +903,7 @@ static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure durati
 	[self setWhiteBalanceGains:[self.videoDevice deviceWhiteBalanceGainsForTemperatureAndTintValues:temperatureAndTint]];
 }
 
+// 设置色调
 - (IBAction)changeTint:(id)sender
 {
 	AVCaptureWhiteBalanceTemperatureAndTintValues temperatureAndTint = {
@@ -897,6 +914,7 @@ static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure durati
 	[self setWhiteBalanceGains:[self.videoDevice deviceWhiteBalanceGainsForTemperatureAndTintValues:temperatureAndTint]];
 }
 
+// ？
 - (IBAction)lockWithGrayWorld:(id)sender
 {
 	[self setWhiteBalanceGains:self.videoDevice.grayWorldDeviceWhiteBalanceGains];
@@ -918,7 +936,7 @@ static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure durati
 }
 
 #pragma mark Capturing Photos
-
+// 拍照
 - (IBAction)capturePhoto:(id)sender
 {
 	// Retrieve the video preview layer's video orientation on the main queue before entering the session queue
@@ -961,6 +979,7 @@ static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure durati
 
 #pragma mark Recording Movies
 
+// 开始录像、停止录像
 - (IBAction)toggleMovieRecording:(id)sender
 {
 	// Disable the Camera button until recording finishes, and disable the Record button until recording starts or finishes (see the AVCaptureFileOutputRecordingDelegate methods)
