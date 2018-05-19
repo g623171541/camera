@@ -36,6 +36,10 @@ typedef NS_ENUM(NSInteger,CameraSetupResult){
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"viewDidLoad" message:@"viewDidLoad" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    [alertView show];
+    
+    
     NSArray *deviceTypes = @[AVCaptureDeviceTypeBuiltInWideAngleCamera,AVCaptureDeviceTypeBuiltInTelephotoCamera,AVCaptureDeviceTypeBuiltInDuoCamera];
     self.videoDeviceDiscoverySession = [AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:deviceTypes mediaType:AVMediaTypeVideo position:AVCaptureDevicePositionBack];
     
@@ -47,10 +51,10 @@ typedef NS_ENUM(NSInteger,CameraSetupResult){
     // 检查相机的权限
     AVAuthorizationStatus videoStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     switch (videoStatus) {
-        case AVAuthorizationStatusAuthorized:       //  已授权
+        case AVAuthorizationStatusAuthorized:       // 已授权
             NSLog(@"已授权");
             break;
-        case AVAuthorizationStatusNotDetermined:    //  还没询问是否开启
+        case AVAuthorizationStatusNotDetermined:    // 还没询问是否开启
         {   // TODO:没搞明白此处为什么一定要加括号作为一个代码块
             NSLog(@"没有询问是否开启");
             // 此时需要将串行队列上的任务挂起
@@ -65,15 +69,30 @@ typedef NS_ENUM(NSInteger,CameraSetupResult){
             }];
             break;
         }
-        case AVAuthorizationStatusDenied:           //  未授权
-            NSLog(@"未授权");
-            break;
-        
+            
         default:
+            NSLog(@"未授权或家长控制");
+            self.setupResult = CameraSetupResultCameraNotAuthorized;
+            //下次进入进行检查，没有授权就进入设置页面
+            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+            }
             break;
     }
 
+    // 在子线程中配置 AVCaptureSession，因为 [AVCaptureSession startRunning] 是一个 blocking call 将会花费大量时间，不能在主线程中造成线程阻塞
+    dispatch_async(self.sessionQueue, ^{
+        [self configAVCaptureSession];
+    });
     
+}
+
+// 配置AVCaptureSession
+-(void)configAVCaptureSession{
+    if (self.setupResult != CameraSetupResultSuccess) {
+        return;
+    }
 }
 
 // 视图将要出现时

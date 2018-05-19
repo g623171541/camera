@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E8A1A8EE20AE637600803D3C /* point.txt in Resources */ = {isa = PBXBuildFile; fileRef = E8A1A8ED20AE637600803D3C /* point.txt */; };
 		E8DAB620208F922100D7C846 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DAB61F208F922100D7C846 /* AppDelegate.m */; };
 		E8DAB623208F922100D7C846 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DAB622208F922100D7C846 /* ViewController.m */; };
 		E8DAB626208F922100D7C846 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8DAB624208F922100D7C846 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E8A1A8ED20AE637600803D3C /* point.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = point.txt; sourceTree = "<group>"; };
 		E8DAB61B208F922100D7C846 /* camera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = camera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8DAB61E208F922100D7C846 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E8DAB61F208F922100D7C846 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				E8DAB629208F922300D7C846 /* LaunchScreen.storyboard */,
 				E8DAB62C208F922300D7C846 /* Info.plist */,
 				E8DAB62D208F922300D7C846 /* main.m */,
+				E8A1A8ED20AE637600803D3C /* point.txt */,
 			);
 			path = camera;
 			sourceTree = "<group>";
@@ -134,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8DAB62B208F922300D7C846 /* LaunchScreen.storyboard in Resources */,
+				E8A1A8EE20AE637600803D3C /* point.txt in Resources */,
 				E8DAB628208F922300D7C846 /* Assets.xcassets in Resources */,
 				E8DAB626208F922100D7C846 /* Main.storyboard in Resources */,
 			);
@@ -292,7 +296,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2D8VM47F67;
 				INFOPLIST_FILE = camera/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,7 +314,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2D8VM47F67;
 				INFOPLIST_FILE = camera/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

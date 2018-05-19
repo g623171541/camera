@@ -1,0 +1,6 @@
+
+--------  问题点  -----------
+1.  在 ViewController中检查相机权限的时候 case AVAuthorizationStatusNotDetermined，下
+    // TODO:没搞明白此处为什么一定要加括号作为一个代码块，不加括号的话会报错
+
+2.  
