@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E871B0B420B1375E0076661F /* CameraPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = E871B0B320B1375E0076661F /* CameraPreviewView.m */; };
 		E8A1A8EE20AE637600803D3C /* point.txt in Resources */ = {isa = PBXBuildFile; fileRef = E8A1A8ED20AE637600803D3C /* point.txt */; };
 		E8DAB620208F922100D7C846 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DAB61F208F922100D7C846 /* AppDelegate.m */; };
 		E8DAB623208F922100D7C846 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8DAB622208F922100D7C846 /* ViewController.m */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E871B0B220B1375E0076661F /* CameraPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraPreviewView.h; sourceTree = "<group>"; };
+		E871B0B320B1375E0076661F /* CameraPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPreviewView.m; sourceTree = "<group>"; };
 		E8A1A8ED20AE637600803D3C /* point.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = point.txt; sourceTree = "<group>"; };
 		E8DAB61B208F922100D7C846 /* camera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = camera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8DAB61E208F922100D7C846 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -67,6 +70,8 @@
 				E8DAB61F208F922100D7C846 /* AppDelegate.m */,
 				E8DAB621208F922100D7C846 /* ViewController.h */,
 				E8DAB622208F922100D7C846 /* ViewController.m */,
+				E871B0B220B1375E0076661F /* CameraPreviewView.h */,
+				E871B0B320B1375E0076661F /* CameraPreviewView.m */,
 				E8DAB634208F92B000D7C846 /* CheckStatus.h */,
 				E8DAB635208F92B000D7C846 /* CheckStatus.m */,
 				E8DAB624208F922100D7C846 /* Main.storyboard */,
@@ -151,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8DAB623208F922100D7C846 /* ViewController.m in Sources */,
+				E871B0B420B1375E0076661F /* CameraPreviewView.m in Sources */,
 				E8DAB62E208F922300D7C846 /* main.m in Sources */,
 				E8DAB636208F92B000D7C846 /* CheckStatus.m in Sources */,
 				E8DAB620208F922100D7C846 /* AppDelegate.m in Sources */,

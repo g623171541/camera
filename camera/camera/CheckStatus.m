@@ -129,6 +129,16 @@
     return YES;
 }
 
+//点击确定直接打开设置界面
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0 && alertView.tag == 100) {
+        NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        if([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    }
+}
+
 
 // ------------  UIImagePickerController   ---------------
 // 检测相机是否可用
