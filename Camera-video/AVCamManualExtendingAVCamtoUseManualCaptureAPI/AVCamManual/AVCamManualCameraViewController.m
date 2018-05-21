@@ -446,6 +446,7 @@ static const float kExposureMinimumDuration = 1.0/1000; // Limit exposure durati
 		return;
 	}
 	if ( [self.session canAddInput:videoDeviceInput] ) {
+        NSLog(@" 可以添加 video input");
 		[self.session addInput:videoDeviceInput];
 		self.videoDeviceInput = videoDeviceInput;
 		self.videoDevice = videoDevice;
