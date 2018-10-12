@@ -27,6 +27,7 @@ typedef NS_ENUM(NSInteger,CameraSetupResult){
     CameraSetupResultSessionConfigurationFailed
 };
 @property (nonatomic) CameraSetupResult setupResult;
+@property (nonatomic,getter=isSessionRunning) BOOL sessionRunning;
 
 // session
 @property (nonatomic) AVCaptureDeviceDiscoverySession *videoDeviceDiscoverySession;
@@ -95,7 +96,7 @@ typedef NS_ENUM(NSInteger,CameraSetupResult){
     
 }
 
-// 配置AVCaptureSession
+#pragma mark - 配置AVCaptureSession
 -(void)configAVCaptureSession{
     if (self.setupResult != CameraSetupResultSuccess) {
         return;
@@ -174,13 +175,30 @@ typedef NS_ENUM(NSInteger,CameraSetupResult){
     
 }
 
-// 视图将要出现时
+#pragma mark - 视图将要出现时
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    
+    dispatch_async(self.sessionQueue, ^{
+        switch (self.setupResult) {
+            case CameraSetupResultSuccess:
+                // 添加观察者
+                [self addObservers];
+                [self.session startRunning];
+                self.sessionRunning = self.session.isRunning;
+                break;
+                
+            default:
+                break;
+        }
+    });
 }
 
+#pragma mark - 添加观察者
+-(void)addObservers{
+    
+}
+#pragma mark - 移除观察者
 
 
 #pragma mark - 检查相机权限
